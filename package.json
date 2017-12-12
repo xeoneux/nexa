@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run check"
   },
   "repository": {
     "type": "git",
@@ -30,5 +37,9 @@
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.5.5",
     "typeorm": "^0.1.7"
+  },
+  "devDependencies": {
+    "gts": "^0.5.1",
+    "typescript": "^2.6.1"
   }
 }
