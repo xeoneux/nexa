@@ -29,6 +29,7 @@
     "@nestjs/microservices": "^4.4.1",
     "@nestjs/swagger": "^1.1.3",
     "@nestjs/testing": "^4.4.1",
+    "@nestjs/typeorm": "^1.0.1",
     "@nestjs/websockets": "^4.4.1",
     "class-sanitizer": "0.0.5",
     "class-transformer": "^0.1.8",
@@ -39,7 +40,10 @@
     "typeorm": "^0.1.7"
   },
   "devDependencies": {
+    "@types/jest": "^21.1.8",
     "gts": "^0.5.1",
+    "jest": "^22.0.3",
+    "supertest": "^3.0.0",
     "ts-node": "^4.0.1",
     "typescript": "^2.6.1"
   }
