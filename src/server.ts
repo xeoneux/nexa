@@ -8,9 +8,8 @@ import {ApplicationModule} from './modules/app.module';
 
   const options = new DocumentBuilder()
                       .setTitle('Nexa')
-                      .setDescription('Nexa API description')
                       .setVersion('1.0')
-                      .addTag('nexa')
+                      .setDescription('Nexa API description')
                       .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('/api', app, document);

@@ -1,14 +1,36 @@
-import {Controller, Get} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
 
+import {CreateUserDto} from './dto/create-user.dto';
+import {UpdateUserDto} from './dto/update-user.dto';
 import {User} from './user.entity';
 import {UserService} from './user.service';
 
 @Controller('user')
 export class UserController {
-  constructor(private readonly photoService: UserService) {}
+  constructor(private readonly userService: UserService) {}
 
   @Get()
-  findAll() {
-    return this.photoService.findAll();
+  index() {
+    return this.userService.find();
+  }
+
+  @Post()
+  create(@Body() createUserDto: CreateUserDto) {
+    this.userService.create(createUserDto);
+  }
+
+  @Get(':id')
+  show(@Param('id') id) {
+    return this.userService.findOneById(id);
+  }
+
+  @Put(':id')
+  update(@Param('id') id, @Body() updateUserDto: UpdateUserDto) {
+    return this.userService.update(id, updateUserDto);
+  }
+
+  @Delete(':id')
+  destroy(@Param('id') id) {
+    return this.userService.deleteById(id);
   }
 }
