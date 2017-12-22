@@ -3,5 +3,5 @@
   "verbose": true,
   "restartable": "rs",
   "watch": ["src/**/*.ts"],
-  "exec": "ts-node ./src/server.ts"
+  "exec": "./node_modules/.bin/ts-node ./src/server.ts"
 }
