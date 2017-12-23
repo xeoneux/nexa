@@ -17,9 +17,10 @@ export class UserService {
 
   async create(createUserDto: CreateUserDto) {
     try {
-      return await this.userRepository.create(createUserDto);
+      const savedUser = await this.userRepository.save(createUserDto) as User;
+      return await this.findOneById(savedUser.id);
     } catch (error) {
-      throw new BadRequestException('Could Not Create Object');
+      throw new BadRequestException('Could Not Create User', error);
     }
   }
 
