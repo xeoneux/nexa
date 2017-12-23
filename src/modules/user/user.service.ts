@@ -1,4 +1,4 @@
-import {Component, Inject} from '@nestjs/common';
+import {BadRequestException, Component, Inject} from '@nestjs/common';
 import {InjectRepository} from '@nestjs/typeorm';
 import {Repository} from 'typeorm';
 
@@ -16,7 +16,11 @@ export class UserService {
   }
 
   async create(createUserDto: CreateUserDto) {
-    return await this.userRepository.create(createUserDto);
+    try {
+      return await this.userRepository.create(createUserDto);
+    } catch (error) {
+      throw new BadRequestException('Could Not Create Object');
+    }
   }
 
   async update(id, updateUserDto: UpdateUserDto) {
