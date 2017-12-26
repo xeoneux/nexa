@@ -4,6 +4,7 @@
     "rootDir": ".",
     "outDir": "build",
     "noImplicitAny": false,
+    "lib": ["dom", "es2015"],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },

@@ -4,9 +4,9 @@ import {classToPlain} from 'class-transformer';
 import {sign} from 'jsonwebtoken';
 import {Repository} from 'typeorm';
 
+import {config} from '../../config';
 import {User} from '../user/user.entity';
 
-import {authConfig} from './auth.config';
 import {CreateTokenDto} from './dto/create-token.dto';
 
 @Component()
@@ -19,11 +19,11 @@ export class AuthService {
       where: {email: createTokenDto.email, password: createTokenDto.password}
     });
     if (!!user) {
-      const payload = classToPlain(user);
+      const expiresIn = 60 * 60;
+      const payload = classToPlain(createTokenDto);
       return {
-        expires_in: authConfig.expiresIn,
-        access_token: sign(
-            payload, authConfig.secret, {expiresIn: authConfig.expiresIn})
+        expires_in: expiresIn,
+        access_token: sign(payload, config.SECRET, {expiresIn})
       };
     } else {
       throw new NotFoundException();
