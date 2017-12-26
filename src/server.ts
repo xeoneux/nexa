@@ -2,7 +2,10 @@ import {ValidationPipe} from '@nestjs/common';
 import {NestFactory} from '@nestjs/core';
 import {DocumentBuilder, SwaggerModule} from '@nestjs/swagger';
 
+import {config} from './config';
 import {ApplicationModule} from './modules/app.module';
+
+const PORT = config.PORT;
 
 (async () => {
   const app = await NestFactory.create(ApplicationModule);
@@ -15,5 +18,5 @@ import {ApplicationModule} from './modules/app.module';
   SwaggerModule.setup('/api', app, document);
   app.useGlobalPipes(new ValidationPipe());
   app.setGlobalPrefix('v1');
-  await app.listen(1234);
+  await app.listen(PORT);
 })();
