@@ -1,7 +1,6 @@
 import {HttpStatus, INestApplication} from '@nestjs/common';
 import {ValidationPipe} from '@nestjs/common';
 import {Test} from '@nestjs/testing';
-
 import * as express from 'express';
 
 import {ApplicationModule} from '../src/modules/app.module';
