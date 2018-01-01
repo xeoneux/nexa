@@ -6,19 +6,19 @@ load({errorOnExtra: true, errorOnMissing: true});
 
 export class Config {
   // Env
-  PORT;
-  @IsIn(['deve'])
-  NODE_ENV;
+  PORT: number;
+  @IsIn(['development', 'production'])
+  NODE_ENV: string;
 
   // Auth
-  EXPIRY;
-  SECRET;
+  EXPIRY: string;
+  SECRET: string;
 
   // Database
-  DB_HOST;
-  DB_USERNAME;
-  DB_PASSWORD;
-  DB_DATABASE;
+  DB_HOST: string;
+  DB_USERNAME: string;
+  DB_PASSWORD: string;
+  DB_DATABASE: string;
 }
 
 const config = plainToClass(Config, process.env);
