@@ -7,7 +7,7 @@ load({errorOnExtra: true, errorOnMissing: true});
 export class Config {
   // Env
   PORT;
-  @IsIn(['development'])
+  @IsIn(['deve'])
   NODE_ENV;
 
   // Auth
@@ -24,6 +24,9 @@ export class Config {
 const config = plainToClass(Config, process.env);
 const errors = validateSync(config);
 
-if (errors.length > 0) process.exit();
+if (errors.length > 0) {
+  console.error(errors);
+  process.exit();
+}
 
 export {config};

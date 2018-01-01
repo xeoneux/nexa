@@ -4,16 +4,15 @@ import {classToPlain} from 'class-transformer';
 import {sign} from 'jsonwebtoken';
 import {Repository} from 'typeorm';
 
+import {config} from '../../../config';
 import {User} from '../user/user.entity';
 
 import {CreateTokenDto} from './dto/create-token.dto';
-import { config } from '../../../config';
 
 @Component()
 export class AuthService {
-  constructor(
-      @InjectRepository(User) private readonly userRepository:
-          Repository<User>) {}
+  constructor(@InjectRepository(User) private readonly userRepository:
+                  Repository<User>) {}
 
   async createToken(createTokenDto: CreateTokenDto) {
     const user = await this.userRepository.findOne({
