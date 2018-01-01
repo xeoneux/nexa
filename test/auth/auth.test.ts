@@ -3,10 +3,10 @@ import {Express} from 'express';
 import {agent} from 'supertest';
 import {getConnection} from 'typeorm';
 
+import {getNestApplication} from '..';
 import {CreateTokenDto} from '../../src/modules/auth/dto/create-token.dto';
 import {CreateUserDto} from '../../src/modules/user/dto/create-user.dto';
 import {User} from '../../src/modules/user/user.entity';
-import {getNestApplication} from '../server';
 
 describe('Auth', () => {
   let server: Express;

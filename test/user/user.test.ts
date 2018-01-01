@@ -3,9 +3,9 @@ import {Express} from 'express';
 import {agent} from 'supertest';
 import {getConnection} from 'typeorm';
 
+import {getNestApplication} from '..';
 import {CreateUserDto} from '../../src/modules/user/dto/create-user.dto';
 import {User} from '../../src/modules/user/user.entity';
-import {getNestApplication} from '../server';
 
 describe('User', () => {
   let server: Express;

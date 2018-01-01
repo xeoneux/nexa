@@ -9,6 +9,8 @@
     "experimentalDecorators": true
   },
   "include": [
+    "config/*.ts",
+    "config/**/*.ts",
     "src/*.ts",
     "src/**/*.ts",
     "test/*.ts",

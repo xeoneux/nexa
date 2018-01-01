@@ -4,20 +4,16 @@ import {classToPlain} from 'class-transformer';
 import {sign} from 'jsonwebtoken';
 import {Repository} from 'typeorm';
 
-import {ConfigService} from '../config/config.service';
-import {AuthConfig} from '../config/configurations/auth.config';
 import {User} from '../user/user.entity';
 
 import {CreateTokenDto} from './dto/create-token.dto';
+import { config } from '../../../config';
 
 @Component()
 export class AuthService {
   constructor(
-      private readonly configService: ConfigService,
       @InjectRepository(User) private readonly userRepository:
           Repository<User>) {}
-
-  authConfig: AuthConfig;
 
   async createToken(createTokenDto: CreateTokenDto) {
     const user = await this.userRepository.findOne({
@@ -25,8 +21,8 @@ export class AuthService {
     });
     if (!!user) {
       const payload = classToPlain(createTokenDto);
-      const expiry = this.configService.authConfig.EXPIRY;
-      const secret = this.configService.authConfig.SECRET;
+      const expiry = config.EXPIRY;
+      const secret = config.SECRET;
       return {
         expires_in: expiry,
         access_token: sign(payload, secret, {expiresIn: expiry})
