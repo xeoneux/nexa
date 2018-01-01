@@ -14,6 +14,7 @@ import {ApplicationModule} from './modules/app.module';
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('/api', app, document);
   app.useGlobalPipes(new ValidationPipe());
+  const port = +process.env.PORT!;
   app.setGlobalPrefix('v1');
-  await app.listen(1234);
+  await app.listen(port);
 })();
