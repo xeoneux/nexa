@@ -7,4 +7,8 @@ import {UserService} from './user.service';
   components: [UserService],
   controllers: [UserController],
 })
-export class UserModule {}
+export class UserModule {
+  constructor(){
+    console.log("Loaded User Module");
+  }
+}
