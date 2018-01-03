@@ -50,7 +50,6 @@
   "devDependencies": {
     "@commitlint/cli": "^5.2.8",
     "@commitlint/config-conventional": "^5.2.3",
-    "@commitlint/prompt-cli": "^5.2.8",
     "@types/express": "^4.11.0",
     "@types/jest": "^21.1.8",
     "@types/jsonwebtoken": "^7.2.5",
