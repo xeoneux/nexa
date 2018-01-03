@@ -80,14 +80,25 @@
       "node"
     ]
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "nodemonConfig": {
+    "ext": "ts",
+    "verbose": true,
+    "restartable": "rs",
+    "watch": [
+      "src/**/*.ts",
+      "test/**/*.ts",
+      "config/**/*.ts"
+    ],
+    "exec": "./node_modules/.bin/ts-node ./src"
   }
 }

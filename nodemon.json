@@ -1,7 +1,0 @@
-{
-  "ext": "ts",
-  "verbose": true,
-  "restartable": "rs",
-  "watch": ["src/**/*.ts"],
-  "exec": "./node_modules/.bin/ts-node ./src"
-}
