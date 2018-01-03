@@ -4,18 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prepare": "npm run compile",
+    "start": "nodemon",
+    "pretest": "npm run compile",
     "test": "jest",
-    "commit": "git-cz",
+    "posttest": "npm run check",
+    "fix": "gts fix",
     "check": "gts check",
     "clean": "gts clean",
+    "commit": "git-cz",
     "compile": "tsc -p .",
     "coverage": "jest --coverage",
-    "commitmsg": "commitlint -e $GIT_PARAMS",
-    "fix": "gts fix",
-    "prepare": "npm run compile",
-    "pretest": "npm run compile",
-    "posttest": "npm run check",
-    "start": "nodemon"
+    "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "repository": {
     "type": "git",
