@@ -10,15 +10,15 @@ import {UserModule} from './user/user.module';
 @Module({
   modules: [
     TypeOrmModule.forRoot([User], {
-      port: 5432,
       type: 'postgres',
-      host: 'localhost',
-      username: 'user',
-      password: 'pass',
-      database: 'test',
-      entities: ['src/**/**.entity{.ts,.js}'],
       synchronize: true,
-      logging: config.NODE_ENV !== 'production'
+      port: config.DB_PORT,
+      host: config.DB_HOST,
+      database: config.DB_DATABASE,
+      username: config.DB_USERNAME,
+      password: config.DB_PASSWORD,
+      entities: ['src/**/**.entity{.ts,.js}'],
+      logging: config.NODE_ENV !== 'production',
     }),
     AuthModule, UserModule
   ]
