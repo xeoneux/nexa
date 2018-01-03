@@ -9,6 +9,7 @@
     "clean": "gts clean",
     "compile": "tsc -p .",
     "coverage": "jest --coverage",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
     "fix": "gts fix",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
@@ -46,6 +47,8 @@
     "typeorm": "^0.1.7"
   },
   "devDependencies": {
+    "@commitlint/cli": "^5.2.8",
+    "@commitlint/config-conventional": "^5.2.3",
     "@types/express": "^4.11.0",
     "@types/jest": "^21.1.8",
     "@types/jsonwebtoken": "^7.2.5",
@@ -53,6 +56,7 @@
     "@types/passport-jwt": "^3.0.0",
     "@types/supertest": "^2.0.4",
     "gts": "^0.5.1",
+    "husky": "^0.14.3",
     "jest": "^22.0.3",
     "nodemon": "^1.14.7",
     "supertest": "^3.0.0",
@@ -72,6 +76,11 @@
       "jsx",
       "json",
       "node"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
     ]
   }
 }
