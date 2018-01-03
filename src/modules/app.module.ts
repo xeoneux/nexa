@@ -27,6 +27,7 @@ import { SocialModule } from "./social/social.module";
       entities: ["src/**/**.entity{.ts,.js}"],
       synchronize: true,
       logging: config.NODE_ENV !== "production"
+
     }),
     AuthModule,
     UserModule,
