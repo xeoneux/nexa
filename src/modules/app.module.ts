@@ -18,7 +18,7 @@ import {UserModule} from './user/user.module';
       username: config.DB_USERNAME,
       password: config.DB_PASSWORD,
       entities: ['src/**/**.entity{.ts,.js}'],
-      logging: config.NODE_ENV !== 'production',
+      logging: config.NODE_ENV === 'development',
     }),
     AuthModule, UserModule
   ]

@@ -7,7 +7,7 @@
     "prepare": "npm run compile",
     "start": "nodemon",
     "pretest": "npm run compile",
-    "test": "jest",
+    "test": "jest --runInBand",
     "posttest": "npm run check",
     "fix": "gts fix",
     "check": "gts check",
@@ -70,7 +70,7 @@
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
-    "testRegex": "(<root-dir>/test/.*|(\\.|/)(test))\\.(ts|js)$",
+    "testRegex": "(<root-dir>/test/.*|(\\.|/)(test))\\.(ts)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",

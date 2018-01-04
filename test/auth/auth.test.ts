@@ -26,12 +26,12 @@ describe('Auth', () => {
     createTokenDto.email = 'johndoe@mail.com';
     createTokenDto.password = 'password';
 
-    it('should throw error if user not found', async () => {
+    it('should return not found if user not found', async () => {
       const res = await agent(server)
                       .post('/v1/auth/token')
                       .send(createTokenDto)
                       .expect(HttpStatus.NOT_FOUND);
-      expect(res.body.access_token).toBeNull();
+      expect(res.body.access_token).toBeUndefined()
     });
 
     it('should return valid token if user found', async () => {
