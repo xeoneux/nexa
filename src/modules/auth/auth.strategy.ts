@@ -4,6 +4,7 @@ import {use} from 'passport';
 import {ExtractJwt, Strategy, VerifiedCallback} from 'passport-jwt';
 
 import {AuthService} from './auth.service';
+import {AuthPayloadDto} from './dto/auth-payload.dto';
 
 @Component()
 export class AuthStrategy extends Strategy {
@@ -14,8 +15,8 @@ export class AuthStrategy extends Strategy {
           passReqToCallback: true,
           jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
         },
-        async (req: Request, payload: {}, done: VerifiedCallback) => {
-          console.log(payload, 'fdas');
+        async (
+            req: Request, payload: AuthPayloadDto, done: VerifiedCallback) => {
           const isValid = await this.authService.validateUser(payload);
           if (!isValid) {
             return done('Unauthorized', false);

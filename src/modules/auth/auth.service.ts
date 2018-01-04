@@ -7,6 +7,7 @@ import {Repository} from 'typeorm';
 import {config} from '../../../config';
 import {User} from '../user/user.entity';
 
+import {AuthPayloadDto} from './dto/auth-payload.dto';
 import {CreateTokenDto} from './dto/create-token.dto';
 
 @Component()
@@ -31,10 +32,13 @@ export class AuthService {
     }
   }
 
-  async validateUser(signedUser): Promise<boolean> {
-    console.log(signedUser);
-    // put some validation logic here
-    // for example query user by id / email / username
-    return true;
+  async validateUser(signedUser: AuthPayloadDto): Promise<boolean> {
+    const user =
+        await this.userRepository.findOne({where: {email: signedUser.email}});
+    if (user) {
+      if (user.password === signedUser.password) return true;
+      return false;
+    }
+    return false;
   }
 }
