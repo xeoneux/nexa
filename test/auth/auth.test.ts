@@ -23,9 +23,16 @@ describe('Auth', () => {
   });
 
   describe('# POST /v1/auth/token', () => {
+    let token;
+
     const createTokenDto = new CreateTokenDto();
     createTokenDto.email = internet.email();
     createTokenDto.password = internet.password();
+
+    const createUserDto = new CreateUserDto();
+    createUserDto.name = name.findName();
+    createUserDto.email = createTokenDto.email;
+    createUserDto.password = createTokenDto.password;
 
     it('should return not found if user not found', async () => {
       const res = await agent(server)
@@ -35,11 +42,14 @@ describe('Auth', () => {
       expect(res.body.access_token).toBeUndefined();
     });
 
+    it('should not allow access to /authorized without token', async () => {
+      const res = await agent(server)
+                      .get('/v1/auth/authorized')
+                      .send()
+                      .expect(HttpStatus.UNAUTHORIZED);
+    });
+
     it('should return valid token if user found', async () => {
-      const createUserDto = new CreateUserDto();
-      createUserDto.name = name.findName();
-      createUserDto.email = createTokenDto.email;
-      createUserDto.password = createTokenDto.password;
       await agent(server)
           .post('/v1/user')
           .send(createUserDto)
@@ -50,6 +60,15 @@ describe('Auth', () => {
                       .expect(HttpStatus.OK);
       expect(res.body.access_token)
           .toMatch(/^[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*$/);
+      token = res.body.access_token;
+    });
+
+    it('should allow access to /authorized with token', async () => {
+      const res = await agent(server)
+                      .get('/v1/auth/authorized')
+                      .set({'Authorization': 'Bearer ' + token})
+                      .send()
+                      .expect(HttpStatus.OK);
     });
   });
 
