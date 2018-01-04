@@ -1,5 +1,6 @@
 import {HttpStatus, INestApplication} from '@nestjs/common';
 import {Express} from 'express';
+import {internet, name} from 'faker';
 import {agent} from 'supertest';
 import {getConnection} from 'typeorm';
 
@@ -23,22 +24,22 @@ describe('Auth', () => {
 
   describe('# POST /v1/auth/token', () => {
     const createTokenDto = new CreateTokenDto();
-    createTokenDto.email = 'johndoe@mail.com';
-    createTokenDto.password = 'password';
+    createTokenDto.email = internet.email();
+    createTokenDto.password = internet.password();
 
     it('should return not found if user not found', async () => {
       const res = await agent(server)
                       .post('/v1/auth/token')
                       .send(createTokenDto)
                       .expect(HttpStatus.NOT_FOUND);
-      expect(res.body.access_token).toBeUndefined()
+      expect(res.body.access_token).toBeUndefined();
     });
 
     it('should return valid token if user found', async () => {
       const createUserDto = new CreateUserDto();
-      createUserDto.name = 'John Doe';
-      createUserDto.email = 'johndoe@mail.com';
-      createUserDto.password = 'password';
+      createUserDto.name = name.findName();
+      createUserDto.email = createTokenDto.email;
+      createUserDto.password = createTokenDto.password;
       await agent(server)
           .post('/v1/user')
           .send(createUserDto)

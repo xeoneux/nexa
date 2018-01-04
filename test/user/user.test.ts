@@ -1,5 +1,6 @@
 import {HttpStatus, INestApplication} from '@nestjs/common';
 import {Express} from 'express';
+import {internet, name} from 'faker';
 import {agent} from 'supertest';
 import {getConnection} from 'typeorm';
 
@@ -22,9 +23,9 @@ describe('User', () => {
 
   describe('# POST /v1/user', () => {
     const createUserDto = new CreateUserDto();
-    createUserDto.name = 'John Doe';
-    createUserDto.email = 'johndoe@mail.com';
-    createUserDto.password = 'password';
+    createUserDto.name = name.findName();
+    createUserDto.email = internet.email();
+    createUserDto.password = internet.password();
 
     it('should create a new user', async () => {
       const res = await agent(server)
