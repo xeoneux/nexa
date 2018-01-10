@@ -11,6 +11,7 @@ import {ApplicationModule} from './modules/app.module';
   const options = new DocumentBuilder()
                       .setTitle('Nexa')
                       .setVersion('1.0')
+                      .setBasePath('/v1')
                       .setDescription('Nexa API description')
                       .build();
   const document = SwaggerModule.createDocument(app, options);
