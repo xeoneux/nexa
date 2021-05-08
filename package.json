@@ -45,7 +45,7 @@
     "pg": "^7.4.0",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.5.5",
-    "typeorm": "^0.1.7"
+    "typeorm": "^0.2.25"
   },
   "devDependencies": {
     "@commitlint/cli": "^5.2.8",
