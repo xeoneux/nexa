@@ -29,7 +29,7 @@
   "homepage": "https://github.com/xeoneux/nexa#readme",
   "dependencies": {
     "@nestjs/common": "^4.4.2",
-    "@nestjs/core": "^4.4.2",
+    "@nestjs/core": "^9.2.1",
     "@nestjs/microservices": "^4.4.1",
     "@nestjs/swagger": "^1.1.3",
     "@nestjs/testing": "^4.4.1",
@@ -61,10 +61,10 @@
     "faker": "^4.1.0",
     "gts": "^0.5.1",
     "husky": "^0.14.3",
-    "jest": "^22.0.3",
+    "jest": "^29.3.1",
     "nodemon": "^1.14.7",
     "supertest": "^3.0.0",
-    "ts-jest": "^22.0.0",
+    "ts-jest": "^29.0.3",
     "ts-node": "^4.0.1",
     "typescript": "^2.6.2"
   },
