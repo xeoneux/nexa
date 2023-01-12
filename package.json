@@ -29,7 +29,7 @@
   "homepage": "https://github.com/xeoneux/nexa#readme",
   "dependencies": {
     "@nestjs/common": "^4.4.2",
-    "@nestjs/core": "^4.4.2",
+    "@nestjs/core": "^9.2.1",
     "@nestjs/microservices": "^4.4.1",
     "@nestjs/swagger": "^1.1.3",
     "@nestjs/testing": "^4.4.1",
